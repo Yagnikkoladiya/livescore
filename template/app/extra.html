@@ -1,0 +1,155 @@
+ <table class="table text-dark table-bordered-dark " style="width:100%; overflow-x: auto;">
+                            <!--  <tr class="background-color-blue bg-primary "><th>Score Card</th></tr>-->
+                            <thead class="bg-warning">
+
+                            <tr style="background-color:#ffd05b;">
+                                <th scope="col">Betsman</th>
+                                <th scope="col">R</th>
+                                <th scope="col">B</th>
+                                <th scope="col">4S</th>
+                                <th scope="col">6S</th>
+                                <th scope="col">S/R</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr bgcolor="lightblue">
+                                <th scope="row">CEO</th>
+                                <td>80</td>
+                                <td>40</td>
+                                <td>7</td>
+                                <td>6</td>
+                                <td>200</td>
+                            </tr>
+                            <tr bgcolor="lightblue">
+                                <th scope="row">jaydip</th>
+                                <td>80</td>
+                                <td>40</td>
+                                <td>7</td>
+                                <td>6</td>
+                                <td>200</td>
+                            </tr>
+                            <tr bgcolor="lightblue">
+                                <th scope="row">HR</th>
+                                <td>80</td>
+                                <td>40</td>
+                                <td>7</td>
+                                <td>6</td>
+                                <td>200</td>
+                            </tr>
+                            <tr bgcolor="lightblue">
+                                <th scope="row">smit</th>
+                                <td>80</td>
+                                <td>40</td>
+                                <td>7</td>
+                                <td>6</td>
+                                <td>200</td>
+                            </tr>
+                            <tr bgcolor="lightblue">
+                                <th scope="row">pragnesh</th>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr bgcolor="lightblue">
+                                <th scope="row">yagnik</th>
+                                <td>100</td>
+                                <td>100</td>
+                                <td>7</td>
+                                <td>6</td>
+                                <td>100</td>
+                            </tr>
+                            <tr bgcolor="lightblue">
+                                <th scope="row">pradip j</th>
+                                <td>14</td>
+                                <td>10</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>140</td>
+                            </tr>
+                            <tr bgcolor="lightblue">
+                                <th scope="row">fenis</th>
+                                <td>20</td>
+                                <td>10</td>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>200</td>
+                            </tr>
+                            <tr bgcolor="lightblue">
+                                <th scope="row">harshil</th>
+                                <td>80</td>
+                                <td>40</td>
+                                <td>7</td>
+                                <td>6</td>
+                                <td>200</td>
+                            </tr>
+                            <tr bgcolor="lightblue">
+                                <th scope="row">gajanan</th>
+                                <td>80</td>
+                                <td>40</td>
+                                <td>7</td>
+                                <td>6</td>
+                                <td>200</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+ $(document).ready(() => {
+
+ setInterval(() => {
+           $.ajax({
+          url: "https://lt-fn-cdn001.akamaized.net/common/en/Etc:UTC/cricket/get_scorecard/33070465",
+          type: "get",
+          success: function(response) {
+          console.log("Api fireeeeee")
+            console.log(response.doc[0].data.score.innings[1])
+            var resData = response.doc[0].data.score.innings[1].batsmen
+            var finalData = []
+            $("#live__main_table").find("tr:gt(0)").remove();
+            resData.map((item,id) => {
+                markup = `
+                <tr bgcolor="lightgray">
+                    <td>${resData[id].batsmanName}</td>
+                    <td>${resData[id].runs}</td>
+                    <td>${resData[id].balls}</td>
+                    <td>${resData[id].fours}</td>
+                    <td>${resData[id].sixes}</td>
+                </tr>
+                `;
+               var tableBody = $('#live__table_body')
+                tableBody.append(markup);
+            })
+          },
+          error: function(err) {
+            console.log(err)
+          }
+        });
+ }
+ , 50000);
+ });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Homepage{% endblock title %}
+{% block main-content %}
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs mt-3 ">
+    <li class="nav-item " style="color: #f4f4fc">
+      <a class="nav-link active" style="width: 370px "href="/live">Live</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="width: 370px" data-toggle="tab" href="#menu1">Upcoming</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="width: 370px" data-toggle="tab" href="#menu2">Finished</a>
+    </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+    <div class="tab-pane container active" id="Live"></div>
+    <div class="tab-pane container fade" id="Upcoming"></div>
+    <div class="tab-pane container fade" id="Finished"></div>
+    </div>
+  </div>
+</body>
+</html>
+{% endblock main-content %}
